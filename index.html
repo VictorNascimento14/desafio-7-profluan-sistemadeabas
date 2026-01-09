@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Abas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f7f7f7;
+            margin: 0;
+            padding: 40px;
+        }
+        .tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+        .tab-btn {
+            padding: 10px 24px;
+            border: none;
+            background: #e0e0e0;
+            cursor: pointer;
+            border-radius: 6px 6px 0 0;
+            font-size: 16px;
+            transition: background 0.2s, color 0.2s;
+        }
+        .tab-btn.active {
+            background: #1976d2;
+            color: #fff;
+            font-weight: bold;
+        }
+        .tab-content {
+            display: none;
+            background: #fff;
+            padding: 24px;
+            border-radius: 0 0 8px 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+        }
+        .tab-content.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <h1>Nossos Serviços</h1>
+    <div class="tabs">
+        <button class="tab-btn active" data-tab="servico1">Consultoria</button>
+        <button class="tab-btn" data-tab="servico2">Desenvolvimento</button>
+        <button class="tab-btn" data-tab="servico3">Suporte</button>
+    </div>
+    <div class="tab-content active" id="servico1">
+        <h2>Consultoria</h2>
+        <p>Oferecemos consultoria especializada para impulsionar o seu negócio com as melhores práticas do mercado.</p>
+    </div>
+    <div class="tab-content" id="servico2">
+        <h2>Desenvolvimento</h2>
+        <p>Desenvolvemos soluções sob medida, desde sites institucionais até sistemas completos.</p>
+    </div>
+    <div class="tab-content" id="servico3">
+        <h2>Suporte</h2>
+        <p>Nosso suporte garante que tudo funcione perfeitamente, com atendimento rápido e eficiente.</p>
+    </div>
+    <script>
+        const tabButtons = document.querySelectorAll('.tab-btn');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        tabButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                
+                tabButtons.forEach(b => b.classList.remove('active'));
+                tabContents.forEach(c => c.classList.remove('active'));
+                
+                btn.classList.add('active');
+                document.getElementById(btn.dataset.tab).classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
